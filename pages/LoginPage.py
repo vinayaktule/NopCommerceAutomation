@@ -47,4 +47,6 @@ class LoginPage(SeleniumDriver):
 
     def verifyLoginFailed(self):
         result = self.isElementPresent(self._login_fail, locatorType='css')
+        if result == False:
+            self.driver.save_screenshot(".\\screenshots\\"+"verifyLoginFailed"+".png")
         return result
