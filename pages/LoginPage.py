@@ -36,6 +36,9 @@ class LoginPage(SeleniumDriver):
     def clickLoginButton(self):
         self.elementClick(self._login_button, locatorType='css')
 
+    def clickLogout(self):
+        self.elementClick(self._logout_link, locatorType='css')
+
     def login(self, username="", password=""):
         self.enterUsername(username)
         self.enterPassword(password)
