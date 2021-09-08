@@ -1,7 +1,3 @@
-import time
-
-from selenium import webdriver
-from selenium.webdriver.common.by import By
 from base.seleniumDriver import SeleniumDriver
 
 
@@ -14,9 +10,9 @@ class LoginPage(SeleniumDriver):
     """Locators"""
     _username_field  = "Email"
     _password_field = "Password"
-    _login_button = "button[type='submit']"
-    _logout_link = "a[href='/logout']"
-    _login_fail = "ul>li:first-of-type"
+    _login_button_css = "button[type='submit']"
+    _logout_link_css = "a[href='/logout']"
+    _login_fail_css = "ul>li:first-of-type"
 
     # def getLoginButton(self):
     #     return self.driver.find_element(By.CSS_SELECTOR, self._login_button)
@@ -34,10 +30,10 @@ class LoginPage(SeleniumDriver):
         self.sendKeys(password, self._password_field)
 
     def clickLoginButton(self):
-        self.elementClick(self._login_button, locatorType='css')
+        self.elementClick(self._login_button_css, locatorType='css')
 
     def clickLogout(self):
-        self.elementClick(self._logout_link, locatorType='css')
+        self.elementClick(self._logout_link_css, locatorType='css')
 
     def login(self, username="", password=""):
         self.enterUsername(username)
@@ -45,11 +41,11 @@ class LoginPage(SeleniumDriver):
         self.clickLoginButton()
 
     def verifyLoginSuccessful(self):
-        result = self.isElementPresent(self._logout_link, locatorType='css')
+        result = self.isElementPresent(self._logout_link_css, locatorType='css')
         return result
 
     def verifyLoginFailed(self):
-        result = self.isElementPresent(self._login_fail, locatorType='css')
-        if result == False:
+        result = self.isElementPresent(self._login_fail_css, locatorType='css')
+        if not result:
             self.driver.save_screenshot(".\\screenshots\\"+"verifyLoginFailed"+".png")
         return result

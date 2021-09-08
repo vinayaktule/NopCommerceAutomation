@@ -23,13 +23,13 @@ class Test_001_LoginTest:
         self.log.info('='*15+"Test Passed"+'='*15)
         self.log.info('+'*15+"Completed Test_001_LoginTest"+'+'*15)
 
-    # def test_invalid_login(self, setup):
-    #     self.log.info("*"*15+'test_invalid_login'+"*"*15)
-    #     self.driver = setup
-    #     self.lp = LoginPage(self.driver)
-    #     self.driver.get(self.baseURL)
-    #     self.lp.login(self.USERNAME, 'admin1')
-    #     result = self.lp.verifyLoginFailed()
-    #     assert result == True
-    #     self.driver.quit()
-    #     self.log.info('='*15+"Test Passed"+'='*15)
+    def test_invalid_login(self, setup):
+        self.log.info("*"*15+'test_invalid_login'+"*"*15)
+        self.driver = setup
+        self.lp = LoginPage(self.driver)
+        self.driver.get(self.baseURL)
+        self.lp.login(self.USERNAME, 'admin1')
+        result = self.lp.verifyLoginFailed()
+        assert result == True
+        self.driver.quit()
+        self.log.info('='*15+"Test Passed"+'='*15)
